@@ -1,70 +1,22 @@
-# Getting Started with Create React App
+# Authentification form website
+# How to install ?
+You need write in terminal VS Code :
+1) git clone https://github.com/Nurseit03/neobis_front_auth
+2) npm start
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Screenshots website
+![image](https://github.com/Nurseit03/neobis_front_auth/assets/66901719/d06b3c99-9c4d-440c-a0aa-572624aca260)
+### Registration
+![image](https://github.com/Nurseit03/neobis_front_auth/assets/66901719/80dacde4-28c2-4157-a3e0-f9633aaa556b)
+![image](https://github.com/Nurseit03/neobis_front_auth/assets/66901719/3bf33da8-077e-489c-8d1a-33754aa6ede2)
+![image](https://github.com/Nurseit03/neobis_front_auth/assets/66901719/d5081790-c275-4d5d-9ba9-baab328fdb5d)
+![image](https://github.com/Nurseit03/neobis_front_auth/assets/66901719/c450b9ed-66d1-4d57-a940-31fdec8cc51d)
+![image](https://github.com/Nurseit03/neobis_front_auth/assets/66901719/cfa03a95-9222-4de7-a5e3-ed32610c8ad6)
+### Reset password
+![image](https://github.com/Nurseit03/neobis_front_auth/assets/66901719/75140b08-5cb4-46c9-9cf5-cef92d124b83)
+![image](https://github.com/Nurseit03/neobis_front_auth/assets/66901719/18788b1b-312c-4f17-b415-8466591c2f97)
+![image](https://github.com/Nurseit03/neobis_front_auth/assets/66901719/c649430c-394b-48bb-acf5-3da2c07ffdbb)
+![image](https://github.com/Nurseit03/neobis_front_auth/assets/66901719/0f2d1455-7d66-4c87-8193-bf8d6b3629b4)
+### Profile
+![image](https://github.com/Nurseit03/neobis_front_auth/assets/66901719/44602daf-ace1-43e7-9262-6cc6f5ce1751)
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

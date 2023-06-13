@@ -1,0 +1,107 @@
+@font-face {
+    font-family: 'Gotham Pro';
+    src: url('../../fonts/gothampro.ttf');
+}
+@font-face {
+    font-family: 'Nunito';
+    src: url('../../fonts/nunito.ttf');
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.wallpaper_container,
+.form_container {
+  flex: 1;
+}
+
+.wallpaper_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Nunito';
+    background: url('../../img/wallpaper.jpg');
+    background-size: cover;
+    background-position-y: -150px;
+}
+.wallpaper__title{
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 44px;
+    margin-top: 14px;
+}
+
+.form_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Gotham Pro';
+}
+.form{
+    width: max(335px);
+}
+.form input::placeholder{
+    color: #C0C0C0;
+}
+
+.form__input{
+    padding: 10px 0px;
+    margin-top: 40px;
+    width: 100%;
+    height: 35px;
+    border-bottom: 0.5px solid #C0C0C0;
+}
+.show__password__control{
+    display: flex;
+    justify-content: flex-end; 
+    align-items: flex-end;
+}
+.show__password__button{
+    background:inherit;
+    border-style: none;    
+    position: absolute;
+    display: flex;
+    margin-bottom: 5px;
+}
+.show__password__button img{
+    width: 20px;
+    height: 17.5px;
+}
+.form__button{
+    margin-top: 82px;
+    padding: 10px;
+    gap: 10px;
+    width: 100%;
+    height: 44px;
+    color: #FFFFFF;
+    background: #C0C0C0;
+    border-radius: 80px;
+}
+
+.form__button--active{
+    background: #5458EA;
+    color:#ffffff;
+}
+
+.get__started{
+    padding-bottom: 57px;
+    padding-top: 100px;
+    color: #5458EA;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.modalText{
+    color: #FFFFFF;
+    font-family: 'Gotham Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 15px;
+}
