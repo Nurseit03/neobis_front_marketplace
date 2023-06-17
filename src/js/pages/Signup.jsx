@@ -41,8 +41,6 @@ const Signup = () => {
         } catch (error) {
           setIsModalOpen(false);
           localStorage.setItem('SignupData', JSON.stringify(values));
-          const savedData = JSON.parse(localStorage.getItem('SignupData'));
-          console.log("Saved data:", savedData);
           navigate("/SignupCreatePassword")
         }
     }
