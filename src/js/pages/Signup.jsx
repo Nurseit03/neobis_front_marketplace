@@ -12,7 +12,7 @@ import axios from "../api/axios";
 
 const initialValues = {
     username:'',
-    password:''
+    email:''
 };
 
 
@@ -21,7 +21,8 @@ const Signup = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalText, setModalText] = useState('');
     const [isInvalid, setIsInvalid] = useState(false);
-    
+    const navigate = useNavigate();
+
     const onSubmit = async (values) => {
         console.log('Form data:',values);
         handleLogin(values);
@@ -35,14 +36,14 @@ const Signup = () => {
             console.log(response)
             throw new Error("Network response was not ok");
           }
-          
-          setIsModalOpen(false);
-          console.log(response);
-          return response;
-        } catch (error) {
           setIsInvalid(true);
           openModal('Данный пользователь уже зарегистрирован');
-          console.log("Error:", error);
+        } catch (error) {
+          setIsModalOpen(false);
+          localStorage.setItem('SignupData', JSON.stringify(values));
+          const savedData = JSON.parse(localStorage.getItem('SignupData'));
+          console.log("Saved data:", savedData);
+          navigate("/SignupCreatePassword")
         }
     }
     
@@ -83,10 +84,9 @@ const Signup = () => {
                 <form className="form" onSubmit={formik.handleSubmit}>
                     <input className={`form__input ${isInvalid ? 'invalid' : ''}`} type="text" placeholder="Имя пользователя" name="username" id="username" onChange={formik.handleChange} value={formik.values.username} onFocus={() => setIsInvalid(false)}/>
                     <div className="show__password__control">
-                        <input className={`form__input ${isInvalid ? 'invalid' : ''}`} type={showPassword ? 'text' : 'password'} name="password" id="password" placeholder="Пароль" onChange={formik.handleChange} value={formik.values.password} onFocus={() => setIsInvalid(false)}/>
-                        <button className="show__password__button" type="button" onClick={handleShowPassword}><img src={showPassword ? hide_password : show_password} alt={showPassword ? 'hide' : 'show'} alt=""/></button>
+                        <input className={`form__input ${isInvalid ? 'invalid' : ''}`} type="email" name="email" id="email" placeholder="Почта" onChange={formik.handleChange} value={formik.values.email} onFocus={() => setIsInvalid(false)}/>
                     </div>
-                    <button type="submit"  id="form__submit__button"  className={`form__button ${formik.values.username && formik.values.password ? 'form__button--active' : ''}`} disabled={!formik.values.username || !formik.values.password}>Далее</button>
+                    <button type="submit"  id="form__submit__button"  className={`form__button ${formik.values.username && formik.values.email ? 'form__button--active' : ''}`} disabled={!formik.values.username || !formik.values.email}>Далее</button>
                 </form>
             </div>
         </div>

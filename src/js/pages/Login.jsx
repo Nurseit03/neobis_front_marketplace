@@ -21,7 +21,6 @@ const Login = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalText, setModalText] = useState('');
     const [isInvalid, setIsInvalid] = useState(false);
-
     
     const onSubmit = async (values) => {
         console.log('Form data:',values);
