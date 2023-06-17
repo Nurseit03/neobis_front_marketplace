@@ -8,7 +8,7 @@ import vector_left from '../../img/vector_left.png';
 import { Link, useNavigate } from 'react-router-dom';
 import ReactModal from 'react-modal';
 import {useFormik} from 'formik';
-import axios from "../api/axios.js";
+import axios from "../api/axios";
 
 const initialValues = {
     username:'',
@@ -16,12 +16,11 @@ const initialValues = {
 };
 
 
-const Login = () => {
+const Signup = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalText, setModalText] = useState('');
     const [isInvalid, setIsInvalid] = useState(false);
-
     
     const onSubmit = async (values) => {
         console.log('Form data:',values);
@@ -33,7 +32,7 @@ const Login = () => {
           const response = await axios.post("/login/", values);
     
           if (!(response.status === 201 || response.status === 200)) {
-            console.log(response);
+            console.log(response)
             throw new Error("Network response was not ok");
           }
           
@@ -42,7 +41,7 @@ const Login = () => {
           return response;
         } catch (error) {
           setIsInvalid(true);
-          openModal('Неверный логин или пароль');
+          openModal('Данный пользователь уже зарегистрирован');
           console.log("Error:", error);
         }
     }
@@ -77,15 +76,18 @@ const Login = () => {
                 <p className="wallpaper__title">MOBI MARKET</p>
             </div>
             <div className="form_container" >
+                <div className="form__title">
+                    <button className="return__button"><Link to="/"><img src={vector_left} alt="return"/></Link></button>
+                    <h1>Регистрация</h1>
+                </div>
                 <form className="form" onSubmit={formik.handleSubmit}>
                     <input className={`form__input ${isInvalid ? 'invalid' : ''}`} type="text" placeholder="Имя пользователя" name="username" id="username" onChange={formik.handleChange} value={formik.values.username} onFocus={() => setIsInvalid(false)}/>
                     <div className="show__password__control">
                         <input className={`form__input ${isInvalid ? 'invalid' : ''}`} type={showPassword ? 'text' : 'password'} name="password" id="password" placeholder="Пароль" onChange={formik.handleChange} value={formik.values.password} onFocus={() => setIsInvalid(false)}/>
                         <button className="show__password__button" type="button" onClick={handleShowPassword}><img src={showPassword ? hide_password : show_password} alt={showPassword ? 'hide' : 'show'} alt=""/></button>
                     </div>
-                    <button type="submit"  id="form__submit__button"  className={`form__button ${formik.values.username && formik.values.password ? 'form__button--active' : ''}`} disabled={!formik.values.username || !formik.values.password}>Войти</button>
+                    <button type="submit"  id="form__submit__button"  className={`form__button ${formik.values.username && formik.values.password ? 'form__button--active' : ''}`} disabled={!formik.values.username || !formik.values.password}>Далее</button>
                 </form>
-                <Link to="/Signup" className="get__started">Зарегистрироваться</Link>
             </div>
         </div>
         <ReactModal 
@@ -124,4 +126,4 @@ const Login = () => {
     )
 }
 
-export default Login;
+export default Signup;
