@@ -7,6 +7,7 @@ import CreatePasswordTitle from '../components/CreatePasswordTitle';
 import vector_left from '../../img/vector_left.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
+import Title from '../../js/components/Title';
 import axios from "../api/axios";
 
 const initialValues = {
@@ -27,7 +28,7 @@ const SignupCreatePassword = () => {
   };  
 
   const handleShowPassword = () => {
-    setShowPassword(!showPassword); 
+    setShowPassword(!showPassword);
   };
 
   const formik = useFormik({
@@ -48,11 +49,7 @@ const SignupCreatePassword = () => {
           <p className="wallpaper__title">MOBI MARKET</p>
         </div>
         <div className="form_container" >
-          <div className="form__title w100">
-            <button className="return__button"><Link to="/Signup"><img src={vector_left} alt="return"/></Link></button>
-            <h1>Регистрация</h1>
-            <button className="show__password__button" type="button" onClick={handleShowPassword}><img src={showPassword ? hide_password : show_password} alt={showPassword ? 'hide' : 'show'} alt=""/></button>
-          </div>
+          <Title showPasswordButton="yes" className="w100" title="Регистрация" showPassword={showPassword} handleShowPassword={handleShowPassword} />
           <form className="form" onSubmit={formik.handleSubmit}>
             <CreatePasswordTitle title="Придумайте пароль"/>
             <input type="password" className="create__password__input" type={showPassword ? 'text' : 'password'} name="password" id="password" onChange={formik.handleChange} placeholder=".   .   .   .   .   .   .   .   ." value={formik.values.password} maxLength={15}/>

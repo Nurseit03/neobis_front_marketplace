@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import '../../css/pages/Login.css'
+import '../../css/pages/Login.css';
+import Title from '../../js/components/Title';
 import shopping from '../../img/shopping.png';
 import hide_password from '../../img/hide_password.png';
 import show_password from '../../img/show_password.png';
@@ -17,7 +18,6 @@ const initialValues = {
 
 
 const Signup = () => {
-    const [showPassword, setShowPassword] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalText, setModalText] = useState('');
     const [isInvalid, setIsInvalid] = useState(false);
@@ -44,10 +44,6 @@ const Signup = () => {
           navigate("/SignupCreatePassword")
         }
     }
-    
-    const handleShowPassword = () => {
-        setShowPassword(!showPassword); 
-    };
 
     const openModal = (text) => {
         setModalText(text);
@@ -75,10 +71,7 @@ const Signup = () => {
                 <p className="wallpaper__title">MOBI MARKET</p>
             </div>
             <div className="form_container" >
-                <div className="form__title">
-                    <button className="return__button"><Link to="/"><img src={vector_left} alt="return"/></Link></button>
-                    <h1>Регистрация</h1>
-                </div>
+                <Title title="Регистрация"/>
                 <form className="form" onSubmit={formik.handleSubmit}>
                     <input className={`form__input ${isInvalid ? 'invalid' : ''}`} type="text" placeholder="Имя пользователя" name="username" id="username" onChange={formik.handleChange} value={formik.values.username} onFocus={() => setIsInvalid(false)}/>
                     <div className="show__password__control">

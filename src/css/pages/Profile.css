@@ -1,0 +1,119 @@
+/*          PROFILE page        */
+.profile{
+    display: flex;
+    height: 100vh;
+}
+.sidebar__container{
+    padding: 24px 52px 24px 42px;
+    background: #FFFFFF;
+    width: 30%;
+}
+
+.sidebar__user__info{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 44px;   
+}
+
+.user__info__control{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.sidebar__categories{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+}
+
+.sidebar__category{
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.sidebar__category:last-child{
+    margin-top: 40px;
+}
+
+.sidebar__category__button{
+    margin-left: auto;
+    background: inherit;
+}
+
+
+
+
+
+.main__container{
+    background: #F6F6F6;
+    padding: 24px 124px 0 124px;
+    width: 100%;
+}
+
+.main__container__title{
+    width: calc(100%/2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: unset;
+    margin-left: 0px;
+}
+
+.profile__photo__change{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 85px;
+    margin-bottom: 32px;
+}
+
+.photo__change__button{
+    color: #5458EA;
+    background: inherit;
+}
+
+
+.main__container__user__info{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form__control{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #FFFFFF;
+    padding: 10px 16px 10px 16px;
+    border-radius: 12px;
+}
+.user__info__input{
+    padding: 10px 16px 10px 16px;
+}
+.user__info__input:not(:last-child){
+    border-bottom: 1px solid #F7F6F9;
+}
+
+.form__add__number{
+    background: inherit;
+    display: flex;
+    align-self: start;
+    font-size: 16px;
+    color: #5458EA;
+    padding: 10px 16px 10px 16px;
+    border-bottom: 1px solid #F7F6F9;
+    width: 100%;
+}
+
+.form__complete{
+    width: 10%;
+    padding: 10px 10px 10px 10px;
+    border-radius: 12px;
+    background: #5458EA;
+    color: white;
+}
