@@ -51,7 +51,7 @@ const SignupCreatePassword = () => {
         <div className="form_container" >
           <Title showPasswordButton="yes" className="w100" title="Регистрация" showPassword={showPassword} handleShowPassword={handleShowPassword} />
           <form className="form" onSubmit={formik.handleSubmit}>
-            <CreatePasswordTitle title="Придумайте пароль"/>
+            <CreatePasswordTitle title="Придумайте пароль" subTitle="Минимальная длина — 8 символов. Для надежности пароль должен содержать буквы и цифры."/>
             <input type="password" className="create__password__input" type={showPassword ? 'text' : 'password'} name="password" id="password" onChange={formik.handleChange} placeholder=".   .   .   .   .   .   .   .   ." value={formik.values.password} maxLength={15}/>
             <button type="submit" id="form__submit__button" className={`form__button ${formik.values.password && isValidPasswordLength ? 'form__button--active' : ''}`} disabled={!formik.values.password || !isValidPasswordLength}>Далее</button>
           </form>

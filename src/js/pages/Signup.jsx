@@ -73,7 +73,7 @@ const Signup = () => {
             <div className="form_container" >
                 <Title title="Регистрация"/>
                 <form className="form" onSubmit={formik.handleSubmit}>
-                    <input className={`form__input ${isInvalid ? 'invalid' : ''}`} type="text" placeholder="Имя пользователя" name="username" id="username" onChange={formik.handleChange} value={formik.values.username} onFocus={() => setIsInvalid(false)}/>
+                    <input className={`form__input ${isInvalid ? 'invalid' : ''}`} type="text" placeholder="Имя пользователя" name="username" id="username" maxLength={15} onChange={formik.handleChange} value={formik.values.username} onFocus={() => setIsInvalid(false)}/>
                     <div className="show__password__control">
                         <input className={`form__input ${isInvalid ? 'invalid' : ''}`} type="email" name="email" id="email" placeholder="Почта" onChange={formik.handleChange} value={formik.values.email} onFocus={() => setIsInvalid(false)}/>
                     </div>

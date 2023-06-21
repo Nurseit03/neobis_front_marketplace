@@ -21,6 +21,11 @@
     flex-direction: column;
     gap: 5px;
 }
+.sidebar__user__name,
+.sidebar__user__email {
+  width: inherit;
+  flex-wrap: wrap;
+}
 
 .sidebar__categories{
     list-style: none;
@@ -102,7 +107,7 @@
 .form__add__number{
     background: inherit;
     display: flex;
-    align-self: start;
+    justify-content: space-between;
     font-size: 16px;
     color: #5458EA;
     padding: 10px 16px 10px 16px;
@@ -116,4 +121,81 @@
     border-radius: 12px;
     background: #5458EA;
     color: white;
+}
+
+
+
+/************ MODAL ************/
+.modal__overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+  
+.modal__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 44px 60px;
+    background: #FFFFFF;
+    border-radius: 40px;
+    width: 565px;
+    height: 514px;
+    position: absolute;
+}
+
+.modal__continue__button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    background: #F7F7F8;
+    border-radius: 16px;
+    width: 100%;
+}
+
+.modal__continue__button.complete {
+    background: #5458EA;
+    color: white;
+}
+
+.modal__title{
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.modal__repeat__code__button{
+    color:#5458EA;
+    background: inherit;
+}
+
+.verification__code{
+    width: 5%;
+
+}
+
+.verification__code__container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.repeatSendCodeTimer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5.5px;
+    align-items: center;
+    color: grey;
 }

@@ -82,7 +82,7 @@ const SignupConfirmPassword = () => {
             <button className="show__password__button" type="button" onClick={handleShowPassword}><img src={showPassword ? hide_password : show_password} alt={showPassword ? 'hide' : 'show'} alt=""/></button>
           </div>
           <form className="form" onSubmit={formik.handleSubmit}>
-            <CreatePasswordTitle title="Повторите пароль"/>
+            <CreatePasswordTitle title="Повторите пароль" subTitle="Минимальная длина — 8 символов. Для надежности пароль должен содержать буквы и цифры."/>
             <input type="password" className={`create__password__input ${!passwordsMatch ? 'input-error' : ''}`} type='password' name="password" id="password" onChange={formik.handleChange} value={password}/>
             <input type="password" className={`create__password__input ${!passwordsMatch ? 'input-error' : ''}`} type={showPassword ? 'text' : 'password'} name="confirm_password" id="confirm_password" onChange={formik.handleChange} placeholder=".   .   .   .   .   .   .   .   ." value={formik.values.confirm_password} maxLength={15} minLength={8}/>
             { !passwordsMatch ? <div className="input-error">Пароли не совпадают</div> : null}
