@@ -5,11 +5,11 @@ import show_password from '../../img/show_password.png';
 import { Link } from 'react-router-dom';
 import axios from "../../js/api/axios.js";
 
-const Title = ({title,showPasswordButton,className, showPassword, handleShowPassword}) => { 
+const Title = ({title,showPasswordButton,className, showPassword, handleShowPassword, ReturnTo}) => { 
     return (
         <div className={`form__title ${className}`}>
             <div className='return__button__control'>
-                <button className="return__button"><Link to="/"><img src={vector_left} alt="return"/></Link></button>
+                <button className="return__button"><Link to={ReturnTo}><img src={vector_left} alt="return"/></Link></button>
                 <h3>Назад</h3>
             </div>
             <h1>{title}</h1>

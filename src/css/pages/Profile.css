@@ -1,5 +1,5 @@
 /*          PROFILE page        */
-.profile{
+.page__container{
     display: flex;
     height: 100vh;
 }
@@ -75,6 +75,9 @@
     gap: 12px;
     margin-top: 85px;
     margin-bottom: 32px;
+}
+.profile__photo__change img{
+    border-radius: 50px;
 }
 
 .photo__change__button{

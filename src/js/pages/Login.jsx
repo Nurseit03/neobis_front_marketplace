@@ -21,6 +21,7 @@ const Login = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalText, setModalText] = useState('');
     const [isInvalid, setIsInvalid] = useState(false);
+    const navigate = useNavigate();
     
     const onSubmit = async (values) => {
         console.log('Form data:',values);
@@ -37,6 +38,7 @@ const Login = () => {
           }
           
           setIsModalOpen(false);
+          navigate("/Profile");
           console.log(response);
           return response;
         } catch (error) {

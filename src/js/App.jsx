@@ -7,6 +7,7 @@ import SignupConfirmPassword from './pages/SignupConfirmPassword';
 import Profile from './pages/Profile';
 import Favorites from './pages/Favorites';
 import MyProducts from './pages/MyProducts';
+import MainPage from './pages/MainPage';
 import { Route, Routes, useLocation} from 'react-router-dom';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/Profile" element={<Profile />}></Route>
         <Route path="/Favorites" element={<Favorites />}></Route>
         <Route path="/MyProducts" element={<MyProducts />}></Route>
+        <Route path="/MainPage" element={<MainPage />}></Route>
       </Routes>
     </div>
   </>

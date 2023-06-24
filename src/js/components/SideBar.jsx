@@ -7,44 +7,36 @@ import exit from '../../img/exit_icon.png'
 import vector_right from '../../img/vector_right.png'
 import axios from "../../js/api/axios.js";
 import { Link } from 'react-router-dom';
+import UserInfo from '../components/UserInfo';
 
 const SideBar = () => {
-    const [username, setUsername] = useState('');
-    const [user_email, setUser_email] = useState('');
 
-    useEffect(() => {
-        const existingData = JSON.parse(localStorage.getItem('SignupData'));
-        if (existingData) {
-            setUsername(existingData.username);
-            setUser_email(existingData.email);
-          }
-    }, [])
     return (
         <>
         <div className="sidebar__container">
-            <div className="sidebar__user__info">
-                <img src={profile_icon} alt="#"/>
-                <div className="user__info__control">
-                    <b className="sidebar__user__name">{username}</b>
-                    <p className="sidebar__user__email">{user_email}</p>
-                </div>
-            </div>
+            <UserInfo />
             <ul className="sidebar__categories">
+                <Link  to="/Favorites">
                 <li className="sidebar__category">
                     <img src={favorites} alt="#"/>
                     <b>Понравившиеся</b>
-                    <Link to="/Favorites" className="sidebar__category__button"><img src={vector_right} alt="go"/></Link>
+                    <img className="sidebar__category__button" src={vector_right} alt="go"/>
                 </li>
+                </Link>
+                <Link  to="/MyProducts">
                 <li className="sidebar__category">
                     <img src={my_products} alt="#"/>
                     <b>Мои товары</b>
-                    <Link to="/MyProducts" className="sidebar__category__button"><img src={vector_right} alt="go"/></Link>
+                    <img className="sidebar__category__button" src={vector_right} alt="go"/>
                 </li>
+                </Link>
+                <Link  to="/">
                 <li className="sidebar__category">
                     <img src={exit} alt="#"/>
                     <b>Выход</b>
-                    <Link className="sidebar__category__button" to="/"><img src={vector_right} alt="go"/></Link>
+                    <img className="sidebar__category__button" src={vector_right} alt="go"/>
                 </li>
+                </Link>
             </ul>
         </div>
         </>

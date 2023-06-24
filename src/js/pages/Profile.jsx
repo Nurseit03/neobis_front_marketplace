@@ -1,14 +1,14 @@
 import React from 'react';
 import SideBar from '../../js/components/SideBar';
-import Main from '../../js/components/Main';
+import ProfileContent from '../components/ProfileContent';
 import '../../css/pages/Profile.css'
 
 const Profile = () => {
     return (
         <>
-        <div className="profile">
+        <div className="page__container">
             <SideBar />
-            <Main />
+            <ProfileContent />
         </div>
         </>
     )

@@ -1,10 +1,10 @@
-import React , {useState} from 'react'
-import Title from '../../js/components/Title';
-import ResendTimer from '../../js/components/ResendTimer';
-import CreatePasswordTitle from '../../js/components/CreatePasswordTitle';
+import React , {useState , useEffect} from 'react'
+import Title from './Title';
+import ResendTimer from './ResendTimer';
+import CreatePasswordTitle from './CreatePasswordTitle';
 import profile_icon2 from '../../img/profile_icon2.png';
 import {useFormik} from 'formik';
-import axios from "../../js/api/axios.js";
+import axios from "../api/axios.js";
 import { Link, useNavigate } from 'react-router-dom';
 import ReactModal from 'react-modal';
 import PhoneInput from 'react-phone-number-input';
@@ -15,11 +15,10 @@ const initialValues = {
     first_name:'',
     last_name: '',
     username:'',
-    date_of_birth:'',
-    email:''
+    date_of_birth:''
 };
 
-const Main = () => {
+const ProfileContent = () => {
     const [verificationCode, setVerificationCode] = useState('');
     const [phoneNumber,setPhoneNumber] = useState ();
     const [isCodeTrue, setIsCodeTrue] = useState(true);
@@ -27,6 +26,14 @@ const Main = () => {
     const [isModalOpen, setModalOpen] = useState(false);
     const [isSecondModalOpen, setSecondModalOpen] = useState(false);
     const [isNumberRegistered , setIsNumberRegistered] = useState();
+    const [username, setUsername] = useState('');
+
+    useEffect(() => {
+        const existingData = JSON.parse(localStorage.getItem('SignupData'));
+        if (existingData) {
+            setUsername(existingData.username);
+          }
+    }, [])
 
     const handleOpenModal = () => {
       setModalOpen(true);
@@ -58,7 +65,7 @@ const Main = () => {
     const sendVerificationCode = () => {
         try {
           const response =  axios.post("/send_verification_code/",{
-            phone_number: phoneNumber
+            phone_number: phoneNumber.toString()
           });
     
           if (!(response.status === 201 || response.status === 200)) {
@@ -116,7 +123,7 @@ const Main = () => {
     return (
         <>
         <div className="main__container">
-            <Title title="Профиль" className="main__container__title"/>
+            <Title ReturnTo="/MainPage" title="Профиль" className="main__container__title"/>
             <div className="profile__photo__change">
                 <img src={profile_icon2} alt="img" style={{width:'80px',height:'80px'}}/>
                 <button className="photo__change__button"><p>Выбрать фотографию</p></button>
@@ -125,7 +132,7 @@ const Main = () => {
                 <div className="form__control">
                 <input className="user__info__input" type="text" placeholder="Имя" name="first_name" id="first_name" onChange={formik.handleChange} value={formik.values.first_name}/>
                 <input className="user__info__input" type="text" placeholder="Фамилия" name="last_name" id="last_name" onChange={formik.handleChange} value={formik.values.last_name}/>
-                <input className="user__info__input" type="text" placeholder="Никнейм" name="username" id="username" onChange={formik.handleChange} value={formik.values.username}/>
+                <input className="user__info__input" type="text" placeholder={username} name="username" id="username" onChange={formik.handleChange} value={formik.values.username}/>
                 <input className="user__info__input" type="date" placeholder="Дата рождения" name="date_of_birth" id="date_of_birth" onChange={formik.handleChange} value={formik.values.date_of_birth}/>
                 </div>
 
@@ -133,7 +140,7 @@ const Main = () => {
                 <button className="form__add__number" type="button" onClick={handleOpenModal}>
                     <p>Добавить номер</p>
                     <p style={{color:'grey'}}>{phoneNumber}</p> </button>
-                <input className="user__info__input" type="email" placeholder="Почта" name="email" id="email" onChange={formik.handleChange} value={formik.values.email}/>
+                <input className="user__info__input" type="email" placeholder="Почта" name="email" id="email"/>
                 </div>
                 <button className="form__complete" type="submit" onClick={onSubmit}>Готово</button>
             </form>
@@ -192,4 +199,4 @@ const Main = () => {
     )
 }
 
-export default Main
+export default ProfileContent;
