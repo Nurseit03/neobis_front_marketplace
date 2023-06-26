@@ -151,7 +151,8 @@
     background: #FFFFFF;
     border-radius: 40px;
     width: 565px;
-    height: 514px;
+    min-height: 514px;
+    height: auto;
     position: absolute;
 }
 
@@ -164,7 +165,7 @@
     gap: 10px;
     background: #F7F7F8;
     border-radius: 16px;
-    width: 100%;
+    width: 75%;
 }
 
 .modal__continue__button.complete {

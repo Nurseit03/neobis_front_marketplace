@@ -102,7 +102,7 @@ const ProfileContent = () => {
 
     const handleProfile = async (values) => {
         try {
-          const response = await axios.post("/profile/", values);
+          const response = await axios.put("/profile/", values);
     
           if (!(response.status === 201 || response.status === 200)) {
             console.log(response);
