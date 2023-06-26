@@ -2,6 +2,7 @@ import React , {useState} from 'react'
 import ReactModal from 'react-modal';
 import close from '../../img/close.png';
 import add from '../../img/image-add.png';
+import axios from '../api/axios';
 
 
 const AddProductModal = ({handleCloseModal}) => {
@@ -23,7 +24,7 @@ const AddProductModal = ({handleCloseModal}) => {
         document.getElementById('file_input').click();
     };
     
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault(); 
         const form = e.target;
         const inputs = form.querySelectorAll('.modal__product__description');
@@ -32,8 +33,16 @@ const AddProductModal = ({handleCloseModal}) => {
           formData[input.name] = input.value;
         });
         formData['selectedImage'] = selectedImage;
-        console.log(formData); 
+        console.log("FORM DATA:",formData); 
         handleCloseModal();
+
+        try {
+            const response = await axios.post('/posts/1', formData);
+            console.log(response.data); 
+          } catch (error) {
+            console.error(error); 
+          }
+
       };
     
 

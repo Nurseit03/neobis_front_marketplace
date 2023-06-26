@@ -6,17 +6,29 @@ import { Link } from 'react-router-dom';
 import '../../css/pages/MainPage.css';
 import AddProductModal from '../components/AddProductModal';
 import UserInfo from '../components/UserInfo';
+import ProductCard from '../components/ProductCard'
 
 const MainPage = () => {
     const [isModalOpen, setModalOpen] = useState(false);
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        axios.get('/photos')
+          .then(response => {
+            setProducts(response.data);
+          })
+          .catch(error => {
+            console.error(error);
+          });
+    }, []);
 
     const handleOpenModal = () => {
         setModalOpen(true);
-      };
+    };
     
-      const handleCloseModal = () => {
+    const handleCloseModal = () => {
         setModalOpen(false);
-      };
+    };
 
     return (
         <>
@@ -29,16 +41,14 @@ const MainPage = () => {
                 </div>
             </div>
             <div className="all_items">
-                <div className="product__card">
-                    
-                </div>
-                <div className="product__card">
-                    
-                </div>
-                <div className="product__card">
-                    
-                </div>
-                
+            {products.slice(0, 15).map(product => (
+            <ProductCard
+              key={product.id}
+              image={product.thumbnailUrl}
+              name={product.title} 
+              price={product.price}
+            />
+            ))}
             </div>
         </div>
         {isModalOpen && <AddProductModal handleCloseModal={handleCloseModal} />}

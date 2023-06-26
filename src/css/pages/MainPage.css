@@ -45,8 +45,9 @@
 
 .product__card{
     display: flex;
-    width: 154px;
-    height: 184px;
+    --product__card__width: 170px;
+    width: var(--product__card__width);
+    height: auto;
     padding: 6px;
     flex-direction: column;
     justify-content: center;
@@ -56,6 +57,37 @@
     border-radius: 12px;
     background: #FFF;
     box-shadow: 0px 2px 12px 0px rgba(73, 73, 73, 0.10);
+}
+
+.product__card__image{
+    width: calc(var(--product__card__width) - 12px);
+    min-height: 85px;
+    border-radius: 6px;
+}
+
+.product__card__name{
+    font-size: 14px;
+    line-height: 120%;
+    width: calc(var(--product__card__width) - 12px);
+    height: 34px;
+    overflow: hidden;
+}
+
+.product__card__price{
+    font-size: 14px;
+    line-height: 120%;
+    color: #5D5FEF;
+    width: calc(var(--product__card__width) - 15px);
+    overflow: hidden;
+}
+
+.product__card__likes{
+    display: inline-flex;
+    gap: 5px;
+    align-items: center;
+    width: calc(var(--product__card__width) - 15px);
+    overflow: hidden;
+
 }
 
 .add__product{

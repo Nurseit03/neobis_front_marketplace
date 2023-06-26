@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://165.227.174.143:8000/";
+const BASE_URL = "https://jsonplaceholder.typicode.com/";
 
 export default axios.create({
     baseURL: BASE_URL,  
