@@ -32,12 +32,12 @@ const AddProductModal = ({handleCloseModal}) => {
         inputs.forEach((input) => {
           formData[input.name] = input.value;
         });
-        formData['selectedImage'] = selectedImage;
+        formData['photo'] = selectedImage;
         console.log("FORM DATA:",formData); 
         handleCloseModal();
 
         try {
-            const response = await axios.post('/posts/1', formData);
+            const response = await axios.post('/products/', formData);
             console.log(response.data); 
           } catch (error) {
             console.error(error); 
@@ -79,8 +79,8 @@ const AddProductModal = ({handleCloseModal}) => {
                 <div className="product__descriptions">
                     <input id="file_input" type="file" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }}/>
                     <input type="text" className="modal__product__description" placeholder="Цена" onChange={handleInputChange} name="price"/>
-                    <input type="text" className="modal__product__description" placeholder="Название"onChange={handleInputChange} name="title"/>
-                    <input type="text" className="modal__product__description" placeholder="Краткое описание" onChange={handleInputChange} name="short_description"/>
+                    <input type="text" className="modal__product__description" placeholder="Название"onChange={handleInputChange} name="name"/>
+                    <input type="text" className="modal__product__description" placeholder="Краткое описание" onChange={handleInputChange} name="description"/>
                     <textarea type="text" className="modal__product__description" placeholder="Полное описание" onChange={handleInputChange} name="full_description"/>
                 </div>
                 <button type="submit" className={`modal__continue__button ${allInputsComplete ? 'complete' : ''}`} >Далее</button>

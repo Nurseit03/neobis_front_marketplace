@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from '../api/axios.js';
+import axios from '../api/axios2.js';
 import  logo from '../../img/main_page_icon.png';
 import profile_icon from '../../img/profile_icon.png'
 import { Link } from 'react-router-dom';
@@ -41,12 +41,13 @@ const MainPage = () => {
                 </div>
             </div>
             <div className="all_items">
-            {products.slice(0, 15).map(product => (
+            {products.slice(0, 14).map(product => (
             <ProductCard
-              key={product.id}
+              product_id={product.id}
               image={product.thumbnailUrl}
               name={product.title} 
               price={product.price}
+              likes={product.likes}
             />
             ))}
             </div>
