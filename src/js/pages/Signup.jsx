@@ -71,7 +71,7 @@ const Signup = () => {
                 <p className="wallpaper__title">MOBI MARKET</p>
             </div>
             <div className="form_container" >
-                <Title title="Регистрация"/>
+                <Title title="Регистрация" ReturnTo="/"/>
                 <form className="form" onSubmit={formik.handleSubmit}>
                     <input className={`form__input ${isInvalid ? 'invalid' : ''}`} type="text" placeholder="Имя пользователя" name="username" id="username" maxLength={15} onChange={formik.handleChange} value={formik.values.username} onFocus={() => setIsInvalid(false)}/>
                     <div className="show__password__control">

@@ -31,6 +31,9 @@ const Login = () => {
     const handleLogin = async (values) => {
         try {
           const response = await axios.post("/login/", values);
+          localStorage.setItem('access-token', response.data.access);
+          localStorage.setItem('refresh-token', response.data.refresh);
+          console.log("ACCESS: ", localStorage.getItem('access-token'));
     
           if (!(response.status === 201 || response.status === 200)) {
             console.log(response);

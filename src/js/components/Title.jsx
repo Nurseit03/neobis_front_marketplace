@@ -9,7 +9,9 @@ const Title = ({title,showPasswordButton,className, showPassword, handleShowPass
     return (
         <div className={`form__title ${className}`}>
             <div className='return__button__control'>
-                <button className="return__button"><Link to={ReturnTo}><img src={vector_left} alt="return"/></Link></button>
+                <Link to={ReturnTo} className="return__button">
+                    <img src={vector_left} alt="return"/>
+                </Link>
                 <h3>Назад</h3>
             </div>
             <h1>{title}</h1>

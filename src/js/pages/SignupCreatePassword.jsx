@@ -19,7 +19,7 @@ const SignupCreatePassword = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (values) => {
-    if (isPasswordValid && isDigitPresent && isSpecialCharPresent && isValidPasswordLength) {
+    if (isPasswordValid && isDigitPresent && isValidPasswordLength) {
       console.log('Form data:', values);
       navigate("/SignupConfirmPassword", { state: { password: values.password } });
     } else {
@@ -38,7 +38,7 @@ const SignupCreatePassword = () => {
 
   const isPasswordValid = formik.touched.password && !formik.errors.password && formik.values.password && /[A-Z]/.test(formik.values.password);
   const isDigitPresent = formik.touched.password && !formik.errors.password && formik.values.password.match(/^(?=.*\d)/);
-  const isSpecialCharPresent = formik.touched.password && !formik.errors.password && formik.values.password.match(/^(?=.*[!@#$%^&*()])/);
+  // const isSpecialCharPresent = formik.touched.password && !formik.errors.password && formik.values.password.match(/^(?=.*[!@#$%^&*()])/);
   const isValidPasswordLength = formik.values.password.length >= 8 && formik.values.password.length <= 15;
 
   return (
@@ -49,7 +49,7 @@ const SignupCreatePassword = () => {
           <p className="wallpaper__title">MOBI MARKET</p>
         </div>
         <div className="form_container" >
-          <Title showPasswordButton="yes" className="w100" title="Регистрация" showPassword={showPassword} handleShowPassword={handleShowPassword} />
+          <Title ReturnTo="/" showPasswordButton="yes" className="w100" title="Регистрация" showPassword={showPassword} handleShowPassword={handleShowPassword} />
           <form className="form" onSubmit={formik.handleSubmit}>
             <CreatePasswordTitle title="Придумайте пароль" subTitle="Минимальная длина — 8 символов. Для надежности пароль должен содержать буквы и цифры."/>
             <input type="password" className="create__password__input" type={showPassword ? 'text' : 'password'} name="password" id="password" onChange={formik.handleChange} placeholder=".   .   .   .   .   .   .   .   ." value={formik.values.password} maxLength={15}/>

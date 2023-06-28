@@ -40,9 +40,9 @@ const SignupConfirmPassword = () => {
   };
 
   const handleSignup = async (values) => {
-    try {
+    try {     
       console.log("data:",values)
-      const response = await axios.post("/register/", values);
+      const response = await axios.post("/register/", JSON.stringify(values));
 
       if (!(response.status === 201 || response.status === 200)) {
         console.log(response);
@@ -77,7 +77,9 @@ const SignupConfirmPassword = () => {
         </div>
         <div className="form_container" >
           <div className="form__title w100">
-            <button className="return__button"><Link to="/SignupCreatePassword"><img src={vector_left} alt="return"/></Link></button>
+            <Link className="return__button" to="/SignupCreatePassword">
+              <img src={vector_left} alt="return"/>
+            </Link>
             <h1>Регистрация</h1>
             <button className="show__password__button" type="button" onClick={handleShowPassword}><img src={showPassword ? hide_password : show_password} alt={showPassword ? 'hide' : 'show'} alt=""/></button>
           </div>

@@ -44,6 +44,11 @@ const ProfileContent = () => {
       setModalOpen(false);
     };
 
+    const handleCloseSecondModal = () => {
+      setSecondModalOpen(false);
+      setModalOpen(true);
+    }
+
     const handleCheckNumber = () => {
         try {
           const response = axios.post("/verify_phone/", phoneNumber);
@@ -176,7 +181,7 @@ const ProfileContent = () => {
 
         <ReactModal
             isOpen={isSecondModalOpen}
-            onRequestClose={handleCloseModal}
+            onRequestClose={handleCloseSecondModal}
             contentLabel="Модальное окно"
             className="modal__content"
             overlayClassName="modal__overlay"
@@ -193,6 +198,7 @@ const ProfileContent = () => {
             <div className="repeatSendCodeTimer">
                 <ResendTimer phoneNumber={phoneNumber} setIsCodeTrue={setIsCodeTrue}/>
             </div>
+            <button onClick={handleCloseSecondModal} className="modal__continue__button">Вернуться</button>
             {!isCodeTrue ? <div className="error">Неверный код</div> : null} 
         </ReactModal>
         </>

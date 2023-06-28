@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from '../api/axios2.js';
+import axios from '../api/axios.js';
 import  logo from '../../img/main_page_icon.png';
 import profile_icon from '../../img/profile_icon.png'
 import { Link } from 'react-router-dom';
@@ -13,15 +13,23 @@ const MainPage = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        axios.get('/photos')
-          .then(response => {
-            setProducts(response.data);
-          })
-          .catch(error => {
-            console.error(error);
-          });
+        const fetchData = async () => {
+            try {
+                let accessToken = localStorage.getItem('access-token');
+                const response = await axios.get("/products/", {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`
+                    }
+                });
+                setProducts(response.data);
+            } catch (error) {
+                console.log("Error:", error);
+            }
+        };
+    
+        fetchData();
     }, []);
-
+    
     const handleOpenModal = () => {
         setModalOpen(true);
     };
