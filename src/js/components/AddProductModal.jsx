@@ -33,11 +33,19 @@ const AddProductModal = ({handleCloseModal}) => {
           formData[input.name] = input.value;
         });
         formData['photo'] = selectedImage;
-        console.log("FORM DATA:",formData); 
+        delete formData['full_description'];    //Можно убрать удаление, когда бэк добавит это поле
+        delete formData['photo'];
+        console.log("Form data:",formData); 
         handleCloseModal();
 
         try {
-            const response = await axios.post('/products/', formData);
+            console.log(formData);
+            const accessToken = localStorage.getItem('access-token');
+            const response = await axios.post('/products/', formData, {
+              headers: {
+                Authorization: `Bearer ${accessToken}`
+              }
+            });
             console.log(response.data); 
           } catch (error) {
             console.error(error); 

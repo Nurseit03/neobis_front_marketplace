@@ -178,7 +178,7 @@ const ProfileContent = () => {
                 <button className="form__add__number" type="button" onClick={handleOpenModal}>
                     <p>Добавить номер</p>
                     <p style={{color:'grey'}}>{phoneNumber}</p> </button>
-                <input className="user__info__input" type="email" placeholder={email} name="email" id="email"/>
+                <input className="user__info__input" type="email" placeholder={email ? email : "Почта"} name="email" id="email"/>
                 </div>
                 <button className="form__complete" type="submit" onClick={onSubmit}>Готово</button>
             </form>

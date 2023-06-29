@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import heart from '../../img/heart.png';
 import axios from '../api/axios';
 
-const ProductCard = ({ image, name, price, likes, product_id }) => {
+const ProductCard = ({ photo , name, price, likes, product_id }) => {
     const [like,setLike] = useState(0);
     const handleLike = () => {
         axios.post(`/products/${product_id}/like/`)
@@ -20,7 +20,7 @@ const ProductCard = ({ image, name, price, likes, product_id }) => {
   return (
     <div className="product__card">
       <button className="product__card__heart__button" onClick={handleOpenCard}>
-        <img src={image} alt="Product" className="product__card__image"/>
+        <img src={photo} alt="Product" className="product__card__image"/>
       </button>
       <p className="product__card__name">{name}</p>
       <p className="product__card__price">{price}</p>

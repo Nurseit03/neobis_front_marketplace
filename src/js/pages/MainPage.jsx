@@ -52,7 +52,7 @@ const MainPage = () => {
             {products.map(product => (
             <ProductCard
               product_id={product.id}
-              image={product.thumbnailUrl}
+              photo={product.photo}
               name={product.title} 
               price={product.price}
               likes={product.likes}
