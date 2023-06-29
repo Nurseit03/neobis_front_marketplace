@@ -25,19 +25,26 @@ const ProfileContent = () => {
     const [isPhoneNumberComplete, setIsPhoneNumberComplete] = useState(false);
     const [isModalOpen, setModalOpen] = useState(false);
     const [isSecondModalOpen, setSecondModalOpen] = useState(false);
-    const [isNumberRegistered , setIsNumberRegistered] = useState();
+    const [isNumberRegistered , setIsNumberRegistered] = useState(false);
     const [username, setUsername] = useState('');
-
+    const [firstName,setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [dateOfBirth, setDateOfBirth] = useState('');
+    const [ email, setEmail] = useState('');
+ 
     useEffect(() => {
         const existingData = JSON.parse(localStorage.getItem('SignupData'));
         if (existingData) {
             setUsername(existingData.username);
+            setFirstName(existingData.first_name);
+            setLastName(existingData.last_name);
+            setDateOfBirth(existingData.date_of_birth);
+            setEmail(existingData.email);
           }
     }, [])
 
     const handleOpenModal = () => {
       setModalOpen(true);
-      setIsNumberRegistered(true); 
     };
   
     const handleCloseModal = () => {
@@ -49,9 +56,9 @@ const ProfileContent = () => {
       setModalOpen(true);
     }
 
-    const handleCheckNumber = () => {
+    const handleCheckCode = async() => {
         try {
-          const response = axios.post("/verify_phone/", phoneNumber);
+          const response = await axios.post("/verify_phone/", phoneNumber);
     
           if (!(response.status === 201 || response.status === 200)) {
             console.log(response);
@@ -61,24 +68,36 @@ const ProfileContent = () => {
           console.log(response);
           return response;
         } catch (error) {
-          setIsNumberRegistered(false);
           setSecondModalOpen(true);
           console.log("Error:", error);
         }
     }
 
-    const sendVerificationCode = () => {
+    const sendVerificationCode = async () => {
         try {
-          const response =  axios.post("/send_verification_code/",{
+          const accessToken = localStorage.getItem('access-token');
+          const response =  await axios.put("/send_verification_code/",
+          {
             phone_number: phoneNumber.toString()
-          });
-    
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`
+            }
+          }
+        );
+          if (response.status === 400){
+            setIsNumberRegistered(true);
+          }
+
           if (!(response.status === 201 || response.status === 200)) {
             console.log(response);
             throw new Error("Network response was not ok");
           }
           
           setIsCodeTrue(true);
+          setModalOpen(false);
+          setSecondModalOpen(true);
           console.log(response);
           return response;
         } catch (error) {
@@ -90,8 +109,9 @@ const ProfileContent = () => {
     const handleOnChangeVerificationCode = (res) => {
         setVerificationCode(res);
         setTimeout(() => {
-            if(verificationCode.length==3){
-                sendVerificationCode(phoneNumber);
+            if(verificationCode.length==4){
+                console.log("Verification code: ",verificationCode);
+                handleCheckCode(phoneNumber);
             }
           }, 500);
                   
@@ -107,14 +127,27 @@ const ProfileContent = () => {
 
     const handleProfile = async (values) => {
         try {
-          const response = await axios.put("/profile/", values);
-    
+          let accessToken = localStorage.getItem('access-token');
+          const response = await axios.put("/profile/", values, {
+            headers: {
+              Authorization: `Bearer ${accessToken}`
+            }
+          });
+
           if (!(response.status === 201 || response.status === 200)) {
             console.log(response);
             throw new Error("Network response was not ok");
           }
           
+          //переписываем данные в localstorage
+          const existingData = JSON.parse(localStorage.getItem('SignupData'));
+          if (existingData) {
+            const updatedData = { ...existingData, ...values };
+            localStorage.setItem('SignupData', JSON.stringify(updatedData));
+          }
+
           console.log(response);
+          window.location.reload();
           return response;
         } catch (error) {
           console.log("Error:", error);
@@ -135,21 +168,23 @@ const ProfileContent = () => {
             </div>
             <form className="main__container__user__info" onSubmit={formik.handleSubmit}>
                 <div className="form__control">
-                <input className="user__info__input" type="text" placeholder="Имя" name="first_name" id="first_name" onChange={formik.handleChange} value={formik.values.first_name}/>
-                <input className="user__info__input" type="text" placeholder="Фамилия" name="last_name" id="last_name" onChange={formik.handleChange} value={formik.values.last_name}/>
-                <input className="user__info__input" type="text" placeholder={username} name="username" id="username" onChange={formik.handleChange} value={formik.values.username}/>
-                <input className="user__info__input" type="date" placeholder="Дата рождения" name="date_of_birth" id="date_of_birth" onChange={formik.handleChange} value={formik.values.date_of_birth}/>
+                <input className="user__info__input" type="text" placeholder={firstName ? firstName : "Имя"} name="first_name" id="first_name" onChange={formik.handleChange} value={formik.values.first_name}/>
+                <input className="user__info__input" type="text" placeholder={lastName ? lastName : "Фамилия"} name="last_name" id="last_name" onChange={formik.handleChange} value={formik.values.last_name}/>
+                <input className="user__info__input" type="text" placeholder={username ? username : "Никнейм"} name="username" id="username" onChange={formik.handleChange} value={formik.values.username || username}/>
+                <input className="user__info__input" type="date" name="date_of_birth" id="date_of_birth" onChange={formik.handleChange} value={formik.values.date_of_birth || dateOfBirth}/>
                 </div>
 
                 <div className="form__control">
                 <button className="form__add__number" type="button" onClick={handleOpenModal}>
                     <p>Добавить номер</p>
                     <p style={{color:'grey'}}>{phoneNumber}</p> </button>
-                <input className="user__info__input" type="email" placeholder="Почта" name="email" id="email"/>
+                <input className="user__info__input" type="email" placeholder={email} name="email" id="email"/>
                 </div>
                 <button className="form__complete" type="submit" onClick={onSubmit}>Готово</button>
             </form>
         </div>
+
+                        {/* ПЕРВОЕ МОДАЛЬНОЕ ОКНО */}
         <ReactModal
             isOpen={isModalOpen}
             onRequestClose={handleCloseModal}
@@ -167,18 +202,18 @@ const ProfileContent = () => {
             value={phoneNumber}
             onChange={setPhoneNumber}
             limitMaxLength={true}
-            onChange={(value) => {
-                setPhoneNumber(value);
-                setIsPhoneNumberComplete(value.length === 13);
+            onChange={(phoneNumber) => {
+                setPhoneNumber(phoneNumber);
+                setIsPhoneNumberComplete(phoneNumber.length === 13);
               }}
             />
-            {!isNumberRegistered ? <div className="error">Данный номер уже зарегистрирован</div> : null}
-            <button className={`modal__continue__button ${isPhoneNumberComplete ? 'complete' : ''}`} type="button" onClick={handleCheckNumber}>Далее</button>
+            {isNumberRegistered ? <div className="error">Данный номер уже зарегистрирован</div> : null}
+            <button className={`modal__continue__button ${isPhoneNumberComplete ? 'complete' : ''}`} type="button" onClick={sendVerificationCode}>Далее</button>
         </ReactModal>
 
 
 
-
+                              {/* ВТОРОЕ МОДАЛЬНОЕ ОКНО (потом на компоненты разделить) */}
         <ReactModal
             isOpen={isSecondModalOpen}
             onRequestClose={handleCloseSecondModal}

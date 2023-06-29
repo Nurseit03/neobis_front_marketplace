@@ -49,7 +49,7 @@ const MainPage = () => {
                 </div>
             </div>
             <div className="all_items">
-            {products.slice(0, 14).map(product => (
+            {products.map(product => (
             <ProductCard
               product_id={product.id}
               image={product.thumbnailUrl}

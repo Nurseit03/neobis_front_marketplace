@@ -26,10 +26,10 @@ const ResendTimer = ({phoneNumber, setIsCodeTrue}) => {
     return `00:${seconds}`;
   };
 
-  const sendVerificationCode = (phoneNumber) => {
+  const sendVerificationCode = async (phoneNumber) => {
       setIsCodeTrue(true);
     try {
-        const response =  axios.post("/send_verification_code/",{
+        const response =  await axios.put("/send_verification_code/",{
           phone_number: phoneNumber
         });
   

@@ -50,7 +50,7 @@ const SignupConfirmPassword = () => {
       }
       
       console.log(response);
-      navigate('/Profile');
+      navigate('/');
       return response;
     } catch (error) {
       console.log("Error:", error);

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useContext} from 'react';
 import '../../css/pages/Login.css'
 import shopping from '../../img/shopping.png';
 import hide_password from '../../img/hide_password.png';
@@ -9,6 +9,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import ReactModal from 'react-modal';
 import {useFormik} from 'formik';
 import axios from "../api/axios.js";
+import {AuthContext} from '../components/AuthProvider';
 
 const initialValues = {
     username:'',
@@ -21,6 +22,7 @@ const Login = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalText, setModalText] = useState('');
     const [isInvalid, setIsInvalid] = useState(false);
+    const { setIsLogged } = useContext(AuthContext);
     const navigate = useNavigate();
     
     const onSubmit = async (values) => {
@@ -34,7 +36,7 @@ const Login = () => {
           localStorage.setItem('access-token', response.data.access);
           localStorage.setItem('refresh-token', response.data.refresh);
           console.log("ACCESS: ", localStorage.getItem('access-token'));
-    
+          setIsLogged(true);
           if (!(response.status === 201 || response.status === 200)) {
             console.log(response);
             throw new Error("Network response was not ok");

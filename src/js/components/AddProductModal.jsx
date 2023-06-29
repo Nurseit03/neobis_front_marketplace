@@ -79,7 +79,7 @@ const AddProductModal = ({handleCloseModal}) => {
                 <div className="product__descriptions">
                     <input id="file_input" type="file" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }}/>
                     <input type="text" className="modal__product__description" placeholder="Цена" onChange={handleInputChange} name="price"/>
-                    <input type="text" className="modal__product__description" placeholder="Название"onChange={handleInputChange} name="name"/>
+                    <input type="text" className="modal__product__description" placeholder="Название" onChange={handleInputChange} name="name"/>
                     <input type="text" className="modal__product__description" placeholder="Краткое описание" onChange={handleInputChange} name="description"/>
                     <textarea type="text" className="modal__product__description" placeholder="Полное описание" onChange={handleInputChange} name="full_description"/>
                 </div>

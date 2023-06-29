@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useContext} from 'react'
 import profile_icon from '../../img/profile_icon.png'
 import profile_icon2 from '../../img/profile_icon2.png'
 import favorites from '../../img/favorites_icon.png'
@@ -8,8 +8,17 @@ import vector_right from '../../img/vector_right.png'
 import axios from "../../js/api/axios.js";
 import { Link } from 'react-router-dom';
 import UserInfo from '../components/UserInfo';
+import { AuthContext } from './AuthProvider';
 
 const SideBar = () => {
+    const { isLogged } = useContext(AuthContext);
+    
+    const handleExit = () => {
+        if (isLogged) {
+          localStorage.removeItem('access-token');
+          localStorage.removeItem('refresh-token');
+        }
+      }
 
     return (
         <>
@@ -31,9 +40,9 @@ const SideBar = () => {
                 </li>
                 </Link>
                 <Link  to="/">
-                <li className="sidebar__category">
+                <li className="sidebar__category" onClick={handleExit}>
                     <img src={exit} alt="#"/>
-                    <b>Выход</b>
+                        <b>Выход</b>
                     <img className="sidebar__category__button" src={vector_right} alt="go"/>
                 </li>
                 </Link>
