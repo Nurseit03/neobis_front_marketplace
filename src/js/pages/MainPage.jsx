@@ -52,10 +52,14 @@ const MainPage = () => {
             {products.map(product => (
             <ProductCard
               product_id={product.id}
-              photo={product.photo}
-              name={product.title} 
+              like_count={product.like_count}
+              name={product.name} 
               price={product.price}
+              photo={product.photo}
+              description={product.description}
+              owner={product.owner}
               likes={product.likes}
+
             />
             ))}
             </div>
