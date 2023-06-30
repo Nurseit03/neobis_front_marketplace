@@ -5,7 +5,14 @@ import Title from '../../js/components/Title';
 const MyAddedProducts = () => {
     return (
         <>
-            <Title title="Мои товары" ReturnTo="/MainPage" />
+        <div className="main_page__container">
+            <div className="main_page__header">
+                <Title title="Мои товары" ReturnTo="/MainPage" className="main_page__title" />
+            </div>
+            <div className="all_items">
+               fff
+            </div>
+        </div>
         </>
     )
 }

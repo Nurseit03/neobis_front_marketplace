@@ -2,10 +2,13 @@ import React, {useState} from 'react';
 import heart from '../../img/heart.png';
 import axios from '../api/axios';
 import bmw from '../../img/bmw.png'
+import ProductInfoModal from '../components/ProductInfoModal';
 
 const ProductCard = ({product_id, like_count, name, price, photo, description, owner, likes }) => {
-    const [productLike, setProductLike] = useState('');
-    const handleLike = async () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [productId, setProductId] = useState();
+
+  const handleLike = async () => {
       try {
         const accessToken = localStorage.getItem('access-token');
         const response = await axios.post(
@@ -15,17 +18,40 @@ const ProductCard = ({product_id, like_count, name, price, photo, description, o
               Authorization: `Bearer ${accessToken}`,
             },
           }
+        );
+
+        const SignupData = localStorage.getItem("SignupData");
+        const username = SignupData.username;
+        
+        const response2 = await axios.post(
+          '/favorites/',
+          {
+            username: username, 
+            product: product_id,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
         ); 
 
-        setProductLike(response.data);
+        console.log("Successfull like:",response);
+        console.log("Successful favorites:",response2);
       } catch (error) {
-        console.error(error);
+        console.error("Like error:",error);
       }
     };
     
-    const handleOpenCard = () => {
-        alert("open");
-    }
+  const handleOpenCard = async() => {
+      try {
+        setIsModalOpen(true);
+        setProductId(product_id);
+      } 
+      catch (error){
+         console.log("Open card error:",error)
+      }
+  }
 
   return (
     <div className="product__card">
@@ -40,6 +66,14 @@ const ProductCard = ({product_id, like_count, name, price, photo, description, o
           </button>
           <p>{like_count}</p>
       </div>
+      {isModalOpen && (
+        <ProductInfoModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)} 
+          handleOpenCard={handleOpenCard}
+          product_id={productId}
+        />
+      )}
     </div>
   );
 }

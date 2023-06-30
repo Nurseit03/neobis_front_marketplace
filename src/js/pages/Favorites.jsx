@@ -5,8 +5,10 @@ import MyFavoriteProducts from '../../js/components/MyFavoriteProducts';
 const Favorites = () => {
     return (
         <>
-        <SideBar />
-        <MyFavoriteProducts />
+        <div className="page__container">
+            <SideBar />
+            <MyFavoriteProducts />
+        </div>
         </>
     )
 }

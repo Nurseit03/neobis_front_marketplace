@@ -49,19 +49,19 @@ const MainPage = () => {
                 </div>
             </div>
             <div className="all_items">
-            {products.map(product => (
-            <ProductCard
-              product_id={product.id}
-              like_count={product.like_count}
-              name={product.name} 
-              price={product.price}
-              photo={product.photo}
-              description={product.description}
-              owner={product.owner}
-              likes={product.likes}
-
-            />
-            ))}
+                {products.length > 0 ? (
+                    products.map((product) => (
+                    <ProductCard
+                        key={product.id}
+                        product_id={product.id}
+                        like_count={product.like_count}
+                        name={product.name}
+                        price={product.price}
+                        photo={product.photo}
+                        description={product.description}
+                        owner={product.owner}
+                        likes={product.likes}
+                    />))) : (<p>Нет доступных продуктов</p>)}
             </div>
         </div>
         {isModalOpen && <AddProductModal handleCloseModal={handleCloseModal} />}

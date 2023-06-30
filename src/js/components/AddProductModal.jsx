@@ -75,7 +75,9 @@ const AddProductModal = ({handleCloseModal}) => {
             className="modal__content add__product"
             overlayClassName="modal__overlay"
             >
-            <button onClick={handleCloseModal} className="close__modal__image"><img src={close} alt="X"/></button>
+            <button onClick={handleCloseModal} className="modal__close__image">
+              <img src={close} alt="Close"/>
+            </button>
             <form onSubmit={handleSubmit} className="add__product__form">
                 <div className="all_items">
                     <button type="button" onClick={handleButtonClick} className="file_input__button">

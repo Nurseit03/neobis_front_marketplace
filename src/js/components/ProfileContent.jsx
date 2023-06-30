@@ -170,7 +170,7 @@ const ProfileContent = () => {
                 <div className="form__control">
                 <input className="user__info__input" type="text" placeholder={firstName ? firstName : "Имя"} name="first_name" id="first_name" onChange={formik.handleChange} value={formik.values.first_name}/>
                 <input className="user__info__input" type="text" placeholder={lastName ? lastName : "Фамилия"} name="last_name" id="last_name" onChange={formik.handleChange} value={formik.values.last_name}/>
-                <input className="user__info__input" type="text" placeholder={username ? username : "Никнейм"} name="username" id="username" onChange={formik.handleChange} value={formik.values.username || username}/>
+                <input className="user__info__input" type="text" placeholder={username ? username : "Никнейм"} name="username" id="username" onChange={formik.handleChange} value={formik.values.username}/>
                 <input className="user__info__input" type="date" name="date_of_birth" id="date_of_birth" onChange={formik.handleChange} value={formik.values.date_of_birth || dateOfBirth}/>
                 </div>
 
