@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import heart from '../../img/heart.png';
+import grey_heart from '../../img/grey_heart.png';
 import axios from '../api/axios';
 import bmw from '../../img/bmw.png';
 import more from '../../img/more-vertical.png';
@@ -10,6 +11,7 @@ const ProductCard = ({product_id, like_count, name, price, photo, description, o
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
   const [productId, setProductId] = useState();
+  const [isLikedByUser, setIsLikedByUser] = useState(false);
 
   const handleLike = async () => {
       try {
@@ -41,6 +43,7 @@ const ProductCard = ({product_id, like_count, name, price, photo, description, o
 
         console.log("Successfull like:",response);
         console.log("Successful favorites:",response2);
+        window.location.reload();
       } catch (error) {
         console.error("Like error:",error);
       }
@@ -58,6 +61,30 @@ const ProductCard = ({product_id, like_count, name, price, photo, description, o
       }
   }
 
+  useEffect(() => {
+        const handleCheckLike = async () => {
+          try {
+            const accessToken = localStorage.getItem('access-token');
+            const response = await axios.get(`/products/${product_id}/`, {
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            });
+
+            const likedUsernames = response.data.likes.map(like => like.username);
+            const userData = localStorage.getItem("SignupData") ? JSON.parse(localStorage.getItem("SignupData")) : null;
+            const username = userData ? userData.username : null;
+            const isLikedByUser = likedUsernames.includes(username);
+
+            setIsLikedByUser(isLikedByUser);
+          } catch (error) {
+            console.log('Open handleCheckLike error:', error);
+          }
+        };
+    
+        handleCheckLike();
+    }, [product_id]);
+
   return (
     <div className="product__card">
       <button className="product__card__heart__button" onClick={handleOpenCard}>
@@ -68,7 +95,7 @@ const ProductCard = ({product_id, like_count, name, price, photo, description, o
       <div className="product__card__likes">
           <div className="product__card__likes">
           <button className="product__card__heart__button" onClick={handleLike}>
-            <img src={heart} alt="#"/>
+          <img src={isLikedByUser ? heart : grey_heart} alt="#" />
           </button>
           <p>{like_count}</p>
           </div>
@@ -81,6 +108,7 @@ const ProductCard = ({product_id, like_count, name, price, photo, description, o
             <ProductMoreModal
               isOpen={isSecondModalOpen}
               onClose={() => setIsSecondModalOpen(false)} 
+              product_id={product_id}
             />
           )}
       </div>

@@ -6,29 +6,41 @@ import axios from '../api/axios';
 
 const MyFavoriteProducts = () => {
     const [products, setProducts] = useState([]);
-    const [id , setId] = useState();
 
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                let accessToken = localStorage.getItem('access-token');
-                const response = await axios.get("/favorites/", {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`
-                    }
-                });
-                console.log('Successful get favorites:',response);
-                setProducts(response.data);
-                setId(response.id);
-                console.log(response.data);
-            } catch (error) {
-                console.log("Error:", error);
-            }
+          try {
+            const accessToken = localStorage.getItem('access-token');
+            const response = await axios.get('/favorites/', {
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            });
+            console.log('Successful get favorites:', response);
+            
+            const favoriteProducts = response.data;
+            const productIds = favoriteProducts.map((item) => item.product);
+            
+            const productRequests = productIds.map((productId) =>
+              axios.get(`/products/${productId}/`, {
+                headers: {
+                  Authorization: `Bearer ${accessToken}`,
+                },
+              })
+            );
+            
+            const productResponses = await Promise.all(productRequests);
+            const productData = productResponses.map((res) => res.data);
+    
+            setProducts(productData);
+          } catch (error) {
+            console.log('Error:', error);
+          }
         };
     
         fetchData();
-    }, []);
-
+      }, []);
+        
     return (
         <>
         <div className="main_page__container">
@@ -47,7 +59,9 @@ const MyFavoriteProducts = () => {
                         description={product.description}
                         owner={product.owner}
                         likes={product.likes}
-                    />))) : (<p>Нет доступных продуктов</p>)}
+                    />
+                    ))
+                        ) : (<p>Нет доступных продуктов</p>)}
             </div>
         </div>
         </>

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../api/axios.js';
 import  logo from '../../img/main_page_icon.png';
-import profile_icon from '../../img/profile_icon.png'
-import { Link } from 'react-router-dom';
 import '../../css/pages/MainPage.css';
 import AddProductModal from '../components/AddProductModal';
 import UserInfo from '../components/UserInfo';

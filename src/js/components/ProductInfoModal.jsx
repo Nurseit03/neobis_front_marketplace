@@ -6,7 +6,7 @@ import heart from '../../img/heart.png';
 import bmw from '../../img/bmw.png';
 import '../../css/components/ProductInfoModal.css';
 
-const ProductInfoModal = ({ isOpen, onClose,product_id }) => {
+const ProductInfoModal = ({ isOpen, onClose,product_id, isEditMode }) => {
     const [productData, setProductData] = useState(null);
 
     useEffect(() => {
@@ -21,6 +21,7 @@ const ProductInfoModal = ({ isOpen, onClose,product_id }) => {
     
             console.log('Successful open card:', response);
             console.log('Card data:', response.data);
+            console.log('Card likes username:', response.data.likes);
             setProductData(response.data);
           } catch (error) {
             console.log('Open card error:', error);
