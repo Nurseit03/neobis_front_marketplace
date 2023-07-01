@@ -48,7 +48,7 @@
 
 .product__card{
     display: flex;
-    --product__card__width: 170px;
+    --product__card__width: 188px;
     width: var(--product__card__width);
     height: auto;
     padding: 6px;
@@ -85,11 +85,16 @@
 }
 
 .product__card__likes{
-    display: inline-flex;
+    display: flex;
+    flex-direction: row;
     gap: 5px;
     align-items: center;
     width: calc(var(--product__card__width) - 15px);
     overflow: hidden;
+}
+
+.product__card__more{
+    background: inherit;
 }
 
 .product__card__heart__button{

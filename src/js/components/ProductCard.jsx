@@ -1,11 +1,14 @@
 import React, {useState} from 'react';
 import heart from '../../img/heart.png';
 import axios from '../api/axios';
-import bmw from '../../img/bmw.png'
+import bmw from '../../img/bmw.png';
+import more from '../../img/more-vertical.png';
 import ProductInfoModal from '../components/ProductInfoModal';
+import ProductMoreModal from '../components/ProductMoreModal';
 
-const ProductCard = ({product_id, like_count, name, price, photo, description, owner, likes }) => {
+const ProductCard = ({product_id, like_count, name, price, photo, description, owner, likes, isMyAddedProductsPage }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
   const [productId, setProductId] = useState();
 
   const handleLike = async () => {
@@ -42,8 +45,10 @@ const ProductCard = ({product_id, like_count, name, price, photo, description, o
         console.error("Like error:",error);
       }
     };
-    
-  const handleOpenCard = async() => {
+  const handleOpenSecondModal = () =>{
+    setIsSecondModalOpen(true);
+  }
+  const handleOpenCard = () => {
       try {
         setIsModalOpen(true);
         setProductId(product_id);
@@ -61,11 +66,25 @@ const ProductCard = ({product_id, like_count, name, price, photo, description, o
       <b className="product__card__name">{name}</b>
       <p className="product__card__price">{price} $</p>
       <div className="product__card__likes">
+          <div className="product__card__likes">
           <button className="product__card__heart__button" onClick={handleLike}>
             <img src={heart} alt="#"/>
           </button>
           <p>{like_count}</p>
+          </div>
+          {isMyAddedProductsPage && (
+          <button className="product__card__more" onClick={handleOpenSecondModal}>
+            <img src={more} alt=":" />
+          </button>
+          )}
+          {isSecondModalOpen && (
+            <ProductMoreModal
+              isOpen={isSecondModalOpen}
+              onClose={() => setIsSecondModalOpen(false)} 
+            />
+          )}
       </div>
+      {/* Модальное окно с подробной информацией  */}
       {isModalOpen && (
         <ProductInfoModal
           isOpen={isModalOpen}

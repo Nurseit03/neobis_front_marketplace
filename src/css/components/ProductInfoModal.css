@@ -51,3 +51,33 @@
     font-weight: 400;
     line-height: 120%;
 }
+
+.product__more__modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    width: auto;
+    height: auto;
+    position: absolute;
+}
+.product__more__actions{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.product__more__action{
+    display: flex;
+    flex-direction: row;
+    background: inherit;
+    align-items: center;
+    gap: 9px;
+}
+.product__more__action-image{
+    border-radius: 6px;
+    background: #5458EA;
+}

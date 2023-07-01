@@ -39,14 +39,24 @@ const AddProductModal = ({handleCloseModal}) => {
         handleCloseModal();
 
         try {
-            console.log(formData);
             const accessToken = localStorage.getItem('access-token');
             const response = await axios.post('/products/', formData, {
               headers: {
                 Authorization: `Bearer ${accessToken}`
               }
             });
-            console.log(response.data); 
+            console.log("Successfull upload:", response)
+            console.log("Product data",response.data); 
+
+            //сохранение id товара в localstorage
+            const uploadedProductId = response.data.id;
+            const uploadedProducts = localStorage.getItem('UploadedProducts');
+            const updatedUploadedProducts = uploadedProducts
+                ? [...JSON.parse(uploadedProducts), uploadedProductId]
+                : [uploadedProductId];
+            localStorage.setItem('UploadedProducts', JSON.stringify(updatedUploadedProducts));
+
+            window.location.reload();
           } catch (error) {
             console.error(error); 
           }
