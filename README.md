@@ -1,5 +1,5 @@
 # Marketplace
-#####
+***
 Technologies used to create it:
 * JavaScript
 * React JS
