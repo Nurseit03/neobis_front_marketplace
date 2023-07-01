@@ -32,7 +32,7 @@ __Screenshots:__ </br>
 
 
 ***
-__Contact with me:__ [telegram : @nurseit_bakytbekov](https://t.me/rian_ru)https://t.me/nurseit_bakytbekov
+__Contact with me:__ [telegram : @nurseit_bakytbekov](https://t.me/nurseit_bakytbekov)
                   
 
 
