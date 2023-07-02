@@ -4,7 +4,6 @@ import shopping from '../../img/shopping.png';
 import hide_password from '../../img/hide_password.png';
 import show_password from '../../img/show_password.png';
 import exclamation from '../../img/exclamation.png';
-import vector_left from '../../img/vector_left.png';
 import { Link, useNavigate } from 'react-router-dom';
 import ReactModal from 'react-modal';
 import {useFormik} from 'formik';
@@ -35,7 +34,6 @@ const Login = () => {
           const response = await axios.post("/login/", values);
           localStorage.setItem('access-token', response.data.access);
           localStorage.setItem('refresh-token', response.data.refresh);
-          console.log("ACCESS: ", localStorage.getItem('access-token'));
           setIsLogged(true);
           if (!(response.status === 201 || response.status === 200)) {
             console.log(response);

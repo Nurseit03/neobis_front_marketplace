@@ -1,12 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import '../../css/pages/Login.css';
 import Title from '../../js/components/Title';
 import shopping from '../../img/shopping.png';
-import hide_password from '../../img/hide_password.png';
-import show_password from '../../img/show_password.png';
 import exclamation from '../../img/exclamation.png';
-import vector_left from '../../img/vector_left.png';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ReactModal from 'react-modal';
 import {useFormik} from 'formik';
 import axios from "../api/axios";
