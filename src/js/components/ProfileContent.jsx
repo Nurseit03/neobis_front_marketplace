@@ -139,7 +139,6 @@ const ProfileContent = () => {
             throw new Error("Network response was not ok");
           }
           
-          //переписываем данные в localstorage
           const existingData = JSON.parse(localStorage.getItem('SignupData'));
           if (existingData) {
             const updatedData = { ...existingData, ...values };
@@ -176,8 +175,12 @@ const ProfileContent = () => {
 
                 <div className="form__control">
                 <button className="form__add__number" type="button" onClick={handleOpenModal}>
+                {localStorage.getItem('SignupData')?.phone_number ? (
+                    <p style={{color:'grey'}}>{localStorage.getItem('SignupData').phone_number}</p>
+                  ) : (
                     <p>Добавить номер</p>
-                    <p style={{color:'grey'}}>{phoneNumber}</p> </button>
+                  )}
+                </button>
                 <input className="user__info__input" type="email" placeholder={email ? email : "Почта"} name="email" id="email"/>
                 </div>
                 <button className="form__complete" type="submit" onClick={onSubmit}>Готово</button>
