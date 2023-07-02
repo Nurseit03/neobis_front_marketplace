@@ -58,17 +58,20 @@ const ProfileContent = () => {
 
     const handleCheckCode = async() => {
         try {
-          const response = await axios.post("/verify_phone/", phoneNumber);
+          const response = await axios.post("/verify_phone/", verificationCode);
     
           if (!(response.status === 201 || response.status === 200)) {
             console.log(response);
             throw new Error("Network response was not ok");
           }
           setIsNumberRegistered(true);
+          console.log("Successfully sended code",verificationCode);
           console.log(response);
           return response;
         } catch (error) {
           setSecondModalOpen(true);
+          console.log("PhoneNumber:",phoneNumber);
+          console.log("Fail send code",verificationCode);
           console.log("Error:", error);
         }
     }
@@ -108,12 +111,9 @@ const ProfileContent = () => {
 
     const handleOnChangeVerificationCode = (res) => {
         setVerificationCode(res);
-        setTimeout(() => {
             if(verificationCode.length==4){
-                console.log("Verification code: ",verificationCode);
-                handleCheckCode(phoneNumber);
+                handleCheckCode(verificationCode);
             }
-          }, 500);
                   
     };
     

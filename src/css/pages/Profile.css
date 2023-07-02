@@ -33,6 +33,9 @@
     flex-direction: column;
     gap: 21px;
 }
+.sidebar__categories>:last-child{
+    margin-top: 20px;
+}
 
 .sidebar__category{
     display: flex;
