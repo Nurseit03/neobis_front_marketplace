@@ -20,7 +20,7 @@ const initialValues = {
 
 const ProfileContent = () => {
     const [verificationCode, setVerificationCode] = useState('');
-    const [phoneNumber,setPhoneNumber] = useState ();
+    const [phoneNumber,setPhoneNumber] = useState ('');
     const [isCodeTrue, setIsCodeTrue] = useState(true);
     const [isPhoneNumberComplete, setIsPhoneNumberComplete] = useState(false);
     const [isModalOpen, setModalOpen] = useState(false);
@@ -177,9 +177,9 @@ const ProfileContent = () => {
                 <button className="form__add__number" type="button" onClick={handleOpenModal}>
                 {localStorage.getItem('SignupData')?.phone_number ? (
                     <p style={{color:'grey'}}>{localStorage.getItem('SignupData').phone_number}</p>
-                  ) : (
-                    <p>Добавить номер</p>
-                  )}
+                    ) : (
+                      <p>Добавить номер</p>
+                    )}
                 </button>
                 <input className="user__info__input" type="email" placeholder={email ? email : "Почта"} name="email" id="email"/>
                 </div>
@@ -206,8 +206,10 @@ const ProfileContent = () => {
             onChange={setPhoneNumber}
             limitMaxLength={true}
             onChange={(phoneNumber) => {
+              if(phoneNumber>1){
                 setPhoneNumber(phoneNumber);
                 setIsPhoneNumberComplete(phoneNumber.length === 13);
+                }
               }}
             />
             {isNumberRegistered ? <div className="error">Данный номер уже зарегистрирован</div> : null}
