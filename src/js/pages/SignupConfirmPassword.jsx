@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../../css/pages/Login.css';
-import shopping from '../../img/shopping.png';
+import mobimarket from '../../img/mobimarket_background.png';
 import hide_password from '../../img/hide_password.png';
 import show_password from '../../img/show_password.png';
 import CreatePasswordTitle from '../components/CreatePasswordTitle';
@@ -72,8 +72,7 @@ const SignupConfirmPassword = () => {
     <>
       <div className="container" >
         <div className="wallpaper_container">
-          <img src={shopping} alt="#"/>
-          <p className="wallpaper__title">MOBI MARKET</p>
+          <img src={mobimarket} alt="#"/>
         </div>
         <div className="form_container" >
           <div className="form__title w100">

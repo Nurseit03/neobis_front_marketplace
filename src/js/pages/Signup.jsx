@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../../css/pages/Login.css';
 import Title from '../../js/components/Title';
-import shopping from '../../img/shopping.png';
+import mobimarket from '../../img/mobimarket_background.png';
 import exclamation from '../../img/exclamation.png';
 import { useNavigate } from 'react-router-dom';
 import ReactModal from 'react-modal';
@@ -64,8 +64,7 @@ const Signup = () => {
         <>
         <div className="container" >
             <div className="wallpaper_container">
-                <img src={shopping} alt="#"/>
-                <p className="wallpaper__title">MOBI MARKET</p>
+                <img src={mobimarket} alt="#"/>
             </div>
             <div className="form_container" >
                 <Title title="Регистрация" ReturnTo="/"/>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../../css/pages/Login.css';
-import shopping from '../../img/shopping.png';
+import mobimarket from '../../img/mobimarket_background.png';
 import CreatePasswordTitle from '../components/CreatePasswordTitle';
 import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
@@ -40,8 +40,7 @@ const SignupCreatePassword = () => {
     <>
       <div className="container" >
         <div className="wallpaper_container">
-          <img src={shopping} alt="#"/>
-          <p className="wallpaper__title">MOBI MARKET</p>
+          <img src={mobimarket} alt="#"/>
         </div>
         <div className="form_container" >
           <Title ReturnTo="/" showPasswordButton="yes" className="w100" title="Регистрация" showPassword={showPassword} handleShowPassword={handleShowPassword} />
