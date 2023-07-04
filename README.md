@@ -15,11 +15,6 @@ git clone https://github.com/Nurseit03/neobis_front_marketplace.git
 ```
 ***
 __Screenshots:__ </br>
-<b>Login</b>
-![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/47a76152-a9d0-4ba9-aaa6-6fb47da3a18a)
-![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/16a66aa1-adc4-44ab-b57b-38cd88f8475e)
-
-
 
 <b>Signup</b>
 ![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/6e0b4761-d197-4d6e-bc2d-1c0f6b14b22a)
@@ -28,6 +23,10 @@ __Screenshots:__ </br>
 ![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/b8ce6da1-a891-42ca-9b8d-9f32b0690021)
 
 
+
+<b>Login</b>
+![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/4c1c4696-a86c-4376-bc2e-6813f74af5ac)
+![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/0d972f72-7887-4b59-9c0d-5b690abbbae0)
 
 
 <b>Profile</b>
