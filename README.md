@@ -1,4 +1,5 @@
-![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/6319cb90-3663-4a7b-a171-13678e522f54)# Marketplace
+![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/7ab47421-4501-432d-b869-7dd174ae8a52)
+# Marketplace
 ***
 Technologies used to create it:
 * JavaScript
