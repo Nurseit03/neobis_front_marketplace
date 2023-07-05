@@ -36,26 +36,37 @@ __Screenshots:__ </br>
 
 
 <b>Main Page</b>
-![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/7ab47421-4501-432d-b869-7dd174ae8a52)
-![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/b6fc3e3c-13b2-4e42-87d5-d96399d6fada)
+![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/c6e01b22-bb8b-410f-911a-b92bf7ae8820)
+![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/0f6cb0f5-388a-472a-8ef7-3983671f057c)
 ***
 
 
 
 <b>Upload product</b>
-![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/423ba6ec-58a1-4f56-b769-854c7c6d3ef8)
-![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/139ffa34-fd2d-4273-a761-f30c46197003)
-![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/80173f95-b6bf-4dd1-82c9-af40137512f7)
-![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/c9d2696e-30e5-4f91-b93e-e3b211c86c08)
+![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/af0aba51-05ab-4b1b-ae03-8f06e2c85e85)
+![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/a37182cd-19fe-4a45-8572-028d618a5b7f)
+![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/a2491852-b8e2-4a55-aae1-f0ee50d6bd97)
+
+
 ***
 
 <b>Favorite products</b>
-![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/42063b73-80f9-42ba-b2b1-3f6361220619)
+![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/ab852a81-ff29-4ed7-ad75-f8ce8c457623)
 ***
 
 
 <b>Uploaded products</b>
-![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/6aa651ab-6078-4619-8e0b-4fd992a3f41c)
+![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/b92eca98-8a79-440d-ab51-234411bd750c)
+***
+<b>Edit my products</b>
+![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/1b0641d7-bed7-40eb-8de9-10f963852b4f)
+![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/b18965bd-c484-4855-aa82-ede816b94aca)
+![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/20688554-5da9-494b-9983-767ecc8ed98c)
+![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/8eb734cf-800f-4334-a9f3-25f468570e84)
+***
+<b>Delete my products</b>
+![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/1b0641d7-bed7-40eb-8de9-10f963852b4f)
+![image](https://github.com/Nurseit03/neobis_front_marketplace/assets/66901719/b119ef1e-1dbe-464a-9b8a-4be3545d942f)
 
 ***
 __Contact with me:__ [telegram : @nurseit_bakytbekov](https://t.me/nurseit_bakytbekov)
