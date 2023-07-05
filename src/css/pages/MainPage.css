@@ -64,8 +64,10 @@
 
 .product__card__image{
     width: calc(var(--product__card__width) - 12px);
-    min-height: 85px;
+    height: 85px;
     border-radius: 6px;
+    object-fit: cover;
+    object-position: center;
 }
 
 .product__card__name{
@@ -165,6 +167,8 @@
 .selected_image{
     width: 100px;
     height: 150px;
+    object-fit: cover;
+    object-position: center;
 }
 
 .main_page__title{

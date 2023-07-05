@@ -48,7 +48,8 @@ const MyAddedProducts = () => {
                 name={product.name}
                 price={product.price}
                 photo={product.photo}
-                description={product.description}
+                full_description={product.full_description}
+                short_description={product.short_description}
                 owner={product.owner}
                 likes={product.likes}
                 isMyAddedProductsPage={true}

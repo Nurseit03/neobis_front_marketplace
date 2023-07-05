@@ -59,6 +59,8 @@ const MyFavoriteProducts = () => {
                         description={product.description}
                         owner={product.owner}
                         likes={product.likes}
+                        full_description={product.full_description}
+                        short_description={product.short_description}
                     />
                     ))
                         ) : (<p>Нет доступных продуктов</p>)}

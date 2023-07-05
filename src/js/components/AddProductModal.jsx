@@ -33,7 +33,6 @@ const AddProductModal = ({handleCloseModal}) => {
           formData[input.name] = input.value;
         });
         formData['photo'] = selectedImage;
-        delete formData['full_description'];    //Можно убрать удаление, когда бэк добавит это поле
         delete formData['photo'];
         console.log("Form data:",formData); 
         handleCloseModal();
@@ -100,7 +99,7 @@ const AddProductModal = ({handleCloseModal}) => {
                     <input id="file_input" type="file" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }}/>
                     <input type="text" className="modal__product__description" placeholder="Цена $" onChange={handleInputChange} name="price"/>
                     <input type="text" className="modal__product__description" placeholder="Название" onChange={handleInputChange} name="name"/>
-                    <input type="text" className="modal__product__description" placeholder="Краткое описание" onChange={handleInputChange} name="description"/>
+                    <input type="text" className="modal__product__description" placeholder="Краткое описание" onChange={handleInputChange} name="short_description"/>
                     <textarea type="text" className="modal__product__description" placeholder="Полное описание" onChange={handleInputChange} name="full_description"/>
                 </div>
                 <button type="submit" className={`modal__continue__button ${allInputsComplete ? 'complete' : ''}`} >Далее</button>

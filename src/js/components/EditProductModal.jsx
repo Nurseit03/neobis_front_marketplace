@@ -9,7 +9,8 @@ const EditProductModal = ({editModalOpen,setEditModalOpen, product_id}) => {
     const [allInputsComplete, setAllInputsComplete] = useState(false);
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
-    const [description, setDescription] = useState("");
+    const [short_description, setShortDescription] = useState("");
+    const [full_description, setFullDescription] = useState("");
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -49,7 +50,6 @@ const EditProductModal = ({editModalOpen,setEditModalOpen, product_id}) => {
         formData[input.name] = input.value;
       });
       formData['photo'] = selectedImage;
-      delete formData['full_description'];    //Можно убрать удаление, когда бэк добавит это поле
       delete formData['photo'];
       console.log("Form data:",formData); 
       handleCloseModal();
@@ -82,7 +82,8 @@ const EditProductModal = ({editModalOpen,setEditModalOpen, product_id}) => {
           });
           setPrice(response.data.price);
           setName(response.data.name);
-          setDescription(response.data.description);
+          setShortDescription(response.data.short_description);
+          setFullDescription(response.data.full_description);
         } catch (error) {
           console.log('Fetch product data error:', error);
         }
@@ -115,8 +116,8 @@ const EditProductModal = ({editModalOpen,setEditModalOpen, product_id}) => {
                 <input id="file_input" type="file" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }}/>
                 <input type="text" className="modal__product__description" placeholder={price} onChange={handleInputChange} name="price"/>
                 <input type="text" className="modal__product__description" placeholder={name} onChange={handleInputChange} name="name"/>
-                <input type="text" className="modal__product__description" placeholder={description} onChange={handleInputChange} name="description"/>
-                <textarea type="text" className="modal__product__description" placeholder="Полное описание" onChange={handleInputChange} name="full_description"/>
+                <input type="text" className="modal__product__description" placeholder={short_description} onChange={handleInputChange} name="short_description"/>
+                <textarea type="text" className="modal__product__description" placeholder={full_description} onChange={handleInputChange} name="full_description"/>
             </div>
             <button type="submit" className={`modal__continue__button ${allInputsComplete ? 'complete' : ''}`} >Далее</button>
         </form>

@@ -7,7 +7,7 @@ import more from '../../img/more-vertical.png';
 import ProductInfoModal from '../components/ProductInfoModal';
 import ProductMoreModal from '../components/ProductMoreModal';
 
-const ProductCard = ({product_id, like_count, name, price, photo, description, owner, likes, isMyAddedProductsPage }) => {
+const ProductCard = ({product_id, like_count, name, price, photo, full_description, short_description, owner, likes, isMyAddedProductsPage }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
   const [productId, setProductId] = useState();
@@ -31,7 +31,7 @@ const ProductCard = ({product_id, like_count, name, price, photo, description, o
         const response2 = await axios.post(
           '/favorites/',
           {
-            username: username, 
+            user: username, 
             product: product_id,
           },
           {
@@ -73,7 +73,7 @@ const ProductCard = ({product_id, like_count, name, price, photo, description, o
 
             const likedUsernames = response.data.likes.map(like => like.username);
             const userData = localStorage.getItem("SignupData") ? JSON.parse(localStorage.getItem("SignupData")) : null;
-            const username = userData ? userData.username : null;
+            const username = userData.username;
             const isLikedByUser = likedUsernames.includes(username);
 
             setIsLikedByUser(isLikedByUser);
@@ -119,6 +119,11 @@ const ProductCard = ({product_id, like_count, name, price, photo, description, o
           onClose={() => setIsModalOpen(false)} 
           handleOpenCard={handleOpenCard}
           product_id={productId}
+          full_description={full_description}
+          short_description={short_description}
+          name={name}
+          price={price}
+          like_count={like_count}
         />
       )}
     </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../api/axios.js';
-import  logo from '../../img/main_page_icon.png';
+import  logo from '../../img/main_page_icon.png';   
 import '../../css/pages/MainPage.css';
 import AddProductModal from '../components/AddProductModal';
 import UserInfo from '../components/UserInfo';
@@ -56,7 +56,8 @@ const MainPage = () => {
                         name={product.name}
                         price={product.price}
                         photo={product.photo}
-                        description={product.description}
+                        short_description={product.short_description}
+                        full_description={product.full_description}
                         owner={product.owner}
                         likes={product.likes}
                     />))) : (<p>Нет доступных продуктов</p>)}
