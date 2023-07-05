@@ -119,7 +119,7 @@ const EditProductModal = ({editModalOpen,setEditModalOpen, product_id}) => {
                 <input type="text" className="modal__product__description" placeholder={short_description} onChange={handleInputChange} name="short_description"/>
                 <textarea type="text" className="modal__product__description" placeholder={full_description} onChange={handleInputChange} name="full_description"/>
             </div>
-            <button type="submit" className={`modal__continue__button ${allInputsComplete ? 'complete' : ''}`} >Далее</button>
+            <button type="submit" className={`modal__continue__button ${allInputsComplete ? 'complete' : ''}`} >Сохранить</button>
         </form>
         </ReactModal>
     )
